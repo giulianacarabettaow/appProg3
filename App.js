@@ -9,11 +9,15 @@ const Tab = createBottomTabNavigator
 export default function App() {
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-          <Tab.Screen name='Register' component={Register} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <Tab.Navigator>
+    //       <Tab.Screen name='Register' component={Register} />
+    //   </Tab.Navigator>
+    // </NavigationContainer>
+    <View style={styles.container}>
+      <Register/>
+      <Login/>
+    </View>
   );
 }
 

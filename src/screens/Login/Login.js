@@ -6,6 +6,8 @@ class Login extends Component{
     constructor(){
         super()
         this.state= {
+            password:'',
+            email:'',
             loggedIN:false,
             errorMessage:'',
         }
@@ -15,12 +17,13 @@ class Login extends Component{
     login (email,pass){
         auth.signInWithEmailAndPassword(email,pass)
         .then(()=>{
-            this.setState({loggedIN: true});
+            // this.setState({loggedIN: true});
+            console.log('logeado')
         })
         .catch( error => {
-            this.setState({errorMessage: error}
-            )
-            // console.log(this.state.errorMessage)
+            // this.setState({errorMessage: error})
+            console.log(error)
+            
         })
     }
 
@@ -46,9 +49,9 @@ class Login extends Component{
             <TouchableOpacity style={styles.button} onPress={()=>this.login(this.state.email, this.state.password)}>
                 <Text style={styles.textButton}>Ingresar</Text>    
             </TouchableOpacity>
-            <TouchableOpacity onPress={ () => this.props.navigation.navigate('Registro')}>
+            {/* <TouchableOpacity onPress={ () => this.props.navigation.navigate('Registro')}>
                <Text>No tengo cuenta. Registrarme.</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             </view>
         )
