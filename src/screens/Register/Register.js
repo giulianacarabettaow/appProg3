@@ -29,7 +29,7 @@ register (email,pass){
         console.log(response) //en user del objeto response que devuelve firebase hay mucha data del usuario registrado
     })
     .catch( error => {
-        this.setState({errorMessage: error}
+        this.setState({errorMessage: error.message}
         )
         // console.log(this.state.errorMessage)
     })
@@ -76,7 +76,7 @@ noUsername(text){
 
 render(){
     return(
-        <view>
+        <View>
             <View style={styles.formContainer}>
             <Text>Register</Text>
             <TextInput
@@ -102,7 +102,7 @@ render(){
                 value={this.state.password}
             />
             </View>
-            <view>
+            <View>
             {
              this.state.password === '' || this.state.email === '' ||  this.state.userName === '' ?
                     <View style={styles.input}>
@@ -119,8 +119,8 @@ render(){
                             {this.state.errorMessage ? <Text >{this.state.errorMessage}</Text> : false}
                     </View>
             }
-            </view>
-        </view>
+            </View>
+        </View>
         )
 
 }

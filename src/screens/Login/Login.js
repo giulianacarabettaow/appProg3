@@ -13,23 +13,25 @@ class Login extends Component{
         }
         console.log(this.state)
     }
-
+//no andan los setStates 
     login (email,pass){
         auth.signInWithEmailAndPassword(email,pass)
         .then(()=>{
-            // this.setState({loggedIN: true});
-            console.log('logeado')
+            this.setState({
+                loggedIN: true
+            })
+            console.log(this.state)
         })
         .catch( error => {
-            // this.setState({errorMessage: error})
             console.log(error)
-            
+            this.setState({errorMessage: error.message})
         })
     }
 
     render(){
         return(
-            <view style={styles.formContainer}>
+            <View>
+            <View style={styles.formContainer}>
             <Text>Login</Text>
             <TextInput
                 style={styles.input}
@@ -46,14 +48,23 @@ class Login extends Component{
                 secureTextEntry={true}
                 value={this.state.password}
             />
-            <TouchableOpacity style={styles.button} onPress={()=>this.login(this.state.email, this.state.password)}>
-                <Text style={styles.textButton}>Ingresar</Text>    
-            </TouchableOpacity>
-            {/* <TouchableOpacity onPress={ () => this.props.navigation.navigate('Registro')}>
-               <Text>No tengo cuenta. Registrarme.</Text>
-            </TouchableOpacity> */}
+            </View>
 
-            </view>
+            <View>
+            {
+                this.state.password === '' || this.state.email === '' ?
+                    <TouchableOpacity onPress={() => this.setState({errorMessage: 'Incomplete field'})} >
+                        <Text style={styles.button}> Completa los campos </Text>
+                    </TouchableOpacity>
+                    
+                :
+                    <TouchableOpacity onPress={() => this.login(this.state.email, this.state.password)} >
+                        <Text> Submit </Text>
+                    </TouchableOpacity>
+            }
+            </View>
+
+            </View>
         )
     
     }
