@@ -18,9 +18,17 @@ class Login extends Component{
         auth.signInWithEmailAndPassword(email,pass)
         .then(()=>{
             this.setState({
-                loggedIN: true
+                loggedIN:true
             })
             console.log(this.state)
+            //hacer el mismo if en registro
+            if(loggedIN == true){
+                this.setState({
+                    password:'',
+                    email:'',
+                    loggedIN:false,
+                })
+            }
         })
         .catch( error => {
             console.log(error)

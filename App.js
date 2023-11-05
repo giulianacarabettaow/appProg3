@@ -4,16 +4,21 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from './src/screens/Login/Login';
 import Register from './src/screens/Register/Register'
 
-const Tab = createBottomTabNavigator
+const Tab = createBottomTabNavigator();
 
 export default function App() {
 
   return (
 
     <View style={styles.container}>
-      <Register/>
-      <Login/>
+      <NavigationContainer>
+        <Tab.Tab.Navigator>
+          <Tab.Screen name='Register' component={Register}/>
+          <Tab.Screen name='Login' component={Login}/>
+        </Tab.Tab.Navigator>
+      </NavigationContainer>
     </View>
+
   );
 }
 
