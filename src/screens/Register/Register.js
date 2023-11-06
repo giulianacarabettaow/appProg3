@@ -22,8 +22,8 @@ class Register extends Component {
         console.log('anda el didMount?')
     }
 
-register (email,pass){
-    auth.createUserWithEmailAndPassword(email,pass)
+register (email,pass){ //no tendriamos que poner aca para que se registre con usuario tmb???
+    auth.createUserWithEmailAndPassword(email,pass)// notas de giuli para giuli: auth es un método de firebase
     .then((response)=>{
         this.setState({registered: true});
         console.log(response) //en user del objeto response que devuelve firebase hay mucha data del usuario registrado
@@ -52,7 +52,7 @@ noPassword(text){
     text === '' ?
        this.setState({
            noPassword: true,
-           errorMessage: 'Crea tu contraseña'
+           errorMessage: 'Ingresa una contraseña'
        })
    :
        this.setState({

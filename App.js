@@ -12,10 +12,10 @@ export default function App() {
 
     <View style={styles.container}>
       <NavigationContainer>
-        <Tab.Tab.Navigator>
+        <Tab.Navigator>
           <Tab.Screen name='Register' component={Register}/>
           <Tab.Screen name='Login' component={Login}/>
-        </Tab.Tab.Navigator>
+        </Tab.Navigator>
       </NavigationContainer>
     </View>
 
